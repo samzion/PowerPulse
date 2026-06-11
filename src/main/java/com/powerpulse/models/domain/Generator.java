@@ -1,4 +1,4 @@
-package com.powerpulse.domain;
+package com.powerpulse.models.domain;
 
 public class Generator extends AbstractPowerSource implements Billable {
 

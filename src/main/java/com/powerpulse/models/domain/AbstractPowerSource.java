@@ -1,4 +1,4 @@
-package com.powerpulse.domain;
+package com.powerpulse.models.domain;
 
 import java.time.LocalDateTime;
 

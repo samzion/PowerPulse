@@ -1,6 +1,6 @@
 package com.powerpulse;
 
-import com.powerpulse.domain.*;
+import com.powerpulse.models.domain.*;
 
 import java.util.List;
 
