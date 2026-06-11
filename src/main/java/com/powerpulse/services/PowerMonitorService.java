@@ -1,6 +1,6 @@
-package com.powerpulse.service;
+package com.powerpulse.services;
 
-import com.powerpulse.domain.PowerSource;
+import com.powerpulse.models.domain.PowerSource;
 
 import java.util.List;
 

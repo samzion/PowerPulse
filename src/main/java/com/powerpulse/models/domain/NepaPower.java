@@ -1,4 +1,4 @@
-package com.powerpulse.domain;
+package com.powerpulse.models.domain;
 
 public class NepaPower extends AbstractPowerSource {
 
