@@ -28,6 +28,22 @@
             <column name="updated_at" type="TIMESTAMP"/>
             <column name="deleted_at" type="TIMESTAMP"/>
         </createTable>
+
+        <!-- Add at the bottom of changeSet 001, before </changeSet> -->
+        <createIndex tableName="business_profiles"
+                     indexName="idx_business_profiles_business_type">
+            <column name="business_type"/>
+        </createIndex>
+
+        <createIndex tableName="business_profiles"
+                     indexName="idx_business_profiles_location">
+            <column name="location"/>
+        </createIndex>
+
+        <createIndex tableName="business_profiles"
+                     indexName="idx_business_profiles_is_deleted">
+            <column name="is_deleted"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>
