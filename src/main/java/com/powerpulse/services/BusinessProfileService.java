@@ -43,15 +43,6 @@ public class BusinessProfileService {
     }
 
     @Transactional(readOnly = true)
-    public List<BusinessProfileResponse> getAll() {
-        log.info("Fetching all business profiles");
-        return repository.findByIsDeletedFalse()
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    @Transactional(readOnly = true)
     public BusinessProfileResponse getById(UUID id) {
         log.info("Fetching business profile with id: {}", id);
         return repository.findByIdAndIsDeletedFalse(id)
@@ -62,18 +53,11 @@ public class BusinessProfileService {
     }
 
     @Transactional(readOnly = true)
-    public List<BusinessProfileResponse> getByType(BusinessType type) {
-        log.info("Fetching business profiles by type: {}", type);
-        return repository.findByBusinessTypeAndIsDeletedFalse(type)
-                .stream()
-                .map(this::toResponse)
-                .toList();
-    }
-
-    @Transactional(readOnly = true)
-    public List<BusinessProfileResponse> getByLocation(LagosZone location) {
-        log.info("Fetching business profiles by location: {}", location);
-        return repository.findByLocationAndIsDeletedFalse(location)
+    public List<BusinessProfileResponse> getAll(
+            BusinessType type, LagosZone location, String name) {
+        log.info("Fetching businesses — type: {}, location: {}, name: {}",
+                type, location, name);
+        return repository.findAllWithFilters(type, location, name)
                 .stream()
                 .map(this::toResponse)
                 .toList();
