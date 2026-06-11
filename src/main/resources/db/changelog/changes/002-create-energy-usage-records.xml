@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="002" author="samson">
+        <createTable tableName="energy_usage_records">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="business_profile_id" type="UUID">
+                <constraints nullable="false"
+                             foreignKeyName="fk_usage_business"
+                             references="business_profiles(id)"/>
+            </column>
+            <column name="source_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hours_used" type="DECIMAL(5,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estimated_kwh" type="DECIMAL(10,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost_naira" type="DECIMAL(15,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timestamp" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="deleted_at" type="TIMESTAMP"/>
+        </createTable>
+
+        <createIndex tableName="energy_usage_records"
+                     indexName="idx_usage_business_profile">
+            <column name="business_profile_id"/>
+        </createIndex>
+
+        <createIndex tableName="energy_usage_records"
+                     indexName="idx_usage_timestamp">
+            <column name="timestamp"/>
+        </createIndex>
+
+        <createIndex tableName="energy_usage_records"
+                     indexName="idx_usage_source_type">
+            <column name="source_type"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
